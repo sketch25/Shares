@@ -22,3 +22,84 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|string|null: false,  unique: true|
+|name|string|null: false|
+|icon|string||
+|profile|text||
+|mail|string|null: false, unique: true|
+|password|string|null: false|
+
+### Association
+- has_many :posts
+- has_many :comments
+- has_many :likes
+- has_many :users,through:Relationship
+
+## Relationshipテーブル
+|Column|Type|Options|
+|------|----|-------|
+|follow_id|references|null: false, foreign_key: true|
+|follower_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+
+## postsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|title|string|null: false|
+|text|text|null: false|
+|date|datetime|null: false|
+
+### Association
+- belongs_to :user
+- has_many :comments
+- has_many :likes
+- has_many :posts_tags
+- has_many :tags,through:posts_tags
+
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|post_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :post
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|null: false, foreign_key: true|
+|post_id|references|null: false, foreign_key: true|
+|text|text|null: false|
+|date|datetime|null: false|
+
+### Association
+- belongs_to :user
+- belongs_to :post
+
+## posts_tagsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|post_id|references|null: false, foreign_key: true|
+|tag_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :post
+- belongs_to :tag
+
+## tagsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|tag|string|null: false|
+
+### Association
+- has_many :posts_tags
+- has_many :posts,through:posts_tags
