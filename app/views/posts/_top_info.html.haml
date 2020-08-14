@@ -1,0 +1,20 @@
+%header.Top-info
+  .Top-info__items
+    .nav
+      Shares
+
+    %form.search-posts
+      .search-posts__input-box
+        %input{type: "text", class: "search-posts__input-box__text", placeholder: "検索"}
+        %label{class: "search-posts__input-box__image"}
+          = icon('fas', 'search')
+
+    
+        
+    .info
+      .info__icons
+        = icon('far', 'edit', class: "info__icons__icon")
+        = icon('fas', 'home', class: "info__icons__icon")
+        = icon('fas', 'circle', class: "info__icons__icon")
+
+
