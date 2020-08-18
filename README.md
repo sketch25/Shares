@@ -26,8 +26,8 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|string|null: false,  unique: true|
-|name|string|null: false|
+|name|string|null: false,  unique: true|
+|nickname|string|null: false|
 |icon|string||
 |profile|text||
 |mail|string|null: false, unique: true|
