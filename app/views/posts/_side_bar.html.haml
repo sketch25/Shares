@@ -3,9 +3,9 @@
     = icon('fas', 'circle', class: "user__icon")
     .user__name
       .user__name__nickname
-        すけっち
+        = current_user.nickname
       .user__name__id
-        sketch111
+        = current_user.name
   %ul.posts
     投稿一覧
     %li.posts__post

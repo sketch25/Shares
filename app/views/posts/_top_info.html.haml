@@ -15,6 +15,5 @@
       .info__icons
         = icon('far', 'edit', class: "info__icons__icon")
         = icon('fas', 'home', class: "info__icons__icon")
-        = icon('fas', 'circle', class: "info__icons__icon")
-
-
+        = link_to edit_user_path(current_user) do
+          = icon('fas', 'circle', class: "info__icons__icon")
