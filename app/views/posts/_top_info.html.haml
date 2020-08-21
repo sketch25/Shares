@@ -1,7 +1,8 @@
 %header.Top-info
   .Top-info__items
     .nav
-      Shares
+      = link_to "/" do
+        Shares
 
     %form.search-posts
       .search-posts__input-box
@@ -13,7 +14,8 @@
         
     .info
       .info__icons
-        = icon('far', 'edit', class: "info__icons__icon")
+        = link_to new_post_path do
+          = icon('far', 'edit', class: "info__icons__icon")
         = icon('fas', 'home', class: "info__icons__icon")
         = link_to edit_user_path(current_user) do
           = icon('fas', 'circle', class: "info__icons__icon")

@@ -53,14 +53,14 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |title|string|null: false|
-|text|text|null: false|
+|content|text|null: false|
 |date|datetime|null: false|
 
 ### Association
 - belongs_to :user
 - has_many :comments
 - has_many :likes
-- has_many :posts_tags
+- has_many :post_tags
 - has_many :tags,through:posts_tags
 
 ## likesテーブル
@@ -78,14 +78,14 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |post_id|references|null: false, foreign_key: true|
-|text|text|null: false|
+|content|text|null: false|
 |date|datetime|null: false|
 
 ### Association
 - belongs_to :user
 - belongs_to :post
 
-## posts_tagsテーブル
+## post_tagsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |post_id|references|null: false, foreign_key: true|
@@ -102,4 +102,4 @@ Things you may want to cover:
 
 ### Association
 - has_many :posts_tags
-- has_many :posts,through:posts_tags
+- has_many :posts,through:post_tags

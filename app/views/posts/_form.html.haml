@@ -1,0 +1,23 @@
+= form_for @post do |f|
+  - if post.errors.any?
+    .Notification
+      .alert
+        %h2= "#{post.errors.full_messages.count}件のエラーが発生しました。"
+        %ul
+          - post.errors.full_messages.each do |message|
+            %li= message
+  .FormField
+    .FormField__label--normal
+      = current_user.nickname
+  .FormField
+    .FormField__label--normal
+      = f.label :タイトル
+    .FormField__input--normal
+      = f.text_field :title, autofocus: true
+  .FormField
+    .FormField__label--normal
+      = f.label :本文
+    .FormField__input--normal
+      = f.text_area :content
+  .actions
+    = f.submit "投稿", class: 'Button UserButton'
