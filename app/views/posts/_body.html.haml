@@ -1,4 +1,6 @@
 .Body
   .Body__items 
-    = render "main_posts"
+    %main
+    .Posts-list
+      = render @posts
     = render "side_bar"
