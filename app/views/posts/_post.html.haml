@@ -4,7 +4,7 @@
     .Post-box__header__user
       .Post-box__header__user__nickname
         = post.user.nickname
-      .Pot-box__header__user__id
+      .Post-box__header__user__id
         = post.user.name
     .Post-box__header__title
       = link_to  post_path(post.id) do
@@ -30,9 +30,10 @@
         タグ３
     .Post-box__footer__actions
       .Post-box__footer__actions__reply
-        = icon('fas', 'reply',class: "Post-box__footer__actions__reply__icon") 
+        = link_to  post_path(post.id) do
+          = icon('fas', 'reply',class: "Post-box__footer__actions__reply__icon") 
         .Post-box__footer__actions__reply__count
-          2
+          = post.comments.count
       .Post-box__footer__actions__favo
         = icon('fas', 'heart', class: "Post-box__footer__actions__favo__icon") 
         .Post-box__footer__actions__favo__count

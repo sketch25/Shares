@@ -6,18 +6,25 @@
         %ul
           - post.errors.full_messages.each do |message|
             %li= message
-  .FormField
-    .FormField__label--normal
-      = current_user.nickname
-  .FormField
-    .FormField__label--normal
-      = f.label :タイトル
-    .FormField__input--normal
-      = f.text_field :title, autofocus: true
-  .FormField
-    .FormField__label--normal
-      = f.label :本文
-    .FormField__input--normal
-      = f.text_area :content
-  .actions
-    = f.submit "投稿", class: 'Button UserButton'
+  %article.Post-box
+    %header.Post-box__header
+      = icon('fas', 'circle', class: "Post-box__header__icon")
+      .Post-box__header__user
+        .Post-box__header__user__nickname
+          = current_user.nickname
+        .Post-box__header__user__id
+          = current_user.name
+      .Post-box__header__title
+        = f.text_field :title, autofocus: true, class: 'Post-box__header__title-input' , placeholder: 'タイトルを入力'
+    .Post-box__main
+      = f.text_area :content, class: 'Post-box__main-input' , placeholder: '投稿内容を入力'
+    .Post-box__footer
+      .Post-box__footer__tags
+        .Post-box__footer__tags__tag
+          タグ１
+        .Post-box__footer__tags__tag
+          タグ２
+        .Post-box__footer__tags__tag
+          タグ３
+      .Post-box__footer__submit
+        = f.submit '送信', class: 'Post-box__footer__submit__btn'

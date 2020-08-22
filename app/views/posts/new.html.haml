@@ -1,3 +1,10 @@
-.AccountPage__form
-  %h1 新規投稿
-  = render partial: 'form', locals: { post: @post }
+.wrapper
+  = render "top_info"
+  .Body
+    .Body__items 
+      %main
+        .Posts-list
+          %h1 新規投稿
+          = render partial: 'form', locals: { post: @post }
+          
+      = render "side_bar"

@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     else
       render :new
     end
-    # redirect_to action: 'index'
   end
 
   def destroy
@@ -26,6 +25,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user)
+    @comment = @post.comments.new
   end
 
   def edit
