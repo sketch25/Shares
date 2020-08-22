@@ -1,5 +1,5 @@
 .wrapper
-  = render "top_info"
+  = render "posts/top_info"
   .Body
     .Body__items 
       %main
@@ -8,7 +8,7 @@
           .Comments
             = icon('fas', 'reply', class: "Comments__icon")
             .Comments-list
-              = render @comments
+              -# = render @comments
           - if user_signed_in?
             .Commentform-box
               .Commentform-box__header
@@ -19,11 +19,11 @@
                   .Commentform-box__header__user__id
                     = current_user.name
                 .Commentform-box__header__title
-                  -# コメントを投稿
+                  コメントを編集
               = form_with model:[@post, @comment], html: {class: "Form"}, local: true do |f|
                 .Form__content
                   = f.text_area :content, class: 'Form__content__input' , placeholder: 'コメントを入力'
                 .Form__submit
                   = f.submit '送信', class: 'Form__submit__btn'
 
-      = render "side_bar"
+      = render "posts/side_bar"

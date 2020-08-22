@@ -1,0 +1,25 @@
+%article.Comment-box
+  %header.Comment-box__header
+    = icon('fas', 'circle', class: "Comment-box__header__icon")
+    .Comment-box__header__user
+      .Comment-box__header__user__nickname
+        = comment.user.nickname
+      .Comment-box__header__user__id
+        = comment.user.name
+    .Comment-box__header__edit
+      - if user_signed_in? && current_user.id == comment.user_id
+        = link_to post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: '削除しますか？' } do
+          = icon('fas', 'trash',class: "Comment-box__header__edit__icon") 
+        = link_to  edit_post_comment_path(comment.post.id, comment.id) do
+          = icon('fas', 'ellipsis-v',class: "Comment-box__header__edit__icon") 
+  .Comment-box__main
+    %p.Comment-box__main__text
+      = safe_join(comment.content.split("\n"),tag(:br))
+    .Comment-box__main__date
+      = comment.created_at.strftime("%Y/%m/%d %H:%M")
+  .Comment-box__footer
+    .Comment-box__footer__actions
+      .Comment-box__footer__actions__favo
+        = icon('fas', 'heart', class: "Comment-box__footer__actions__favo__icon") 
+        .Comment-box__footer__actions__favo__count
+          3
