@@ -1,11 +1,17 @@
 %article.Comment-box
   %header.Comment-box__header
-    = icon('fas', 'circle', class: "Comment-box__header__icon")
+    = link_to user_path(comment.user.id) do
+      - if comment.user.icon?
+        = image_tag comment.user.icon.url, class:"Comment-box__header__icon"
+      - else
+        = icon('fas', 'circle', class: "Comment-box__header__icon")
     .Comment-box__header__user
       .Comment-box__header__user__nickname
-        = comment.user.nickname
+        = link_to user_path(comment.user.id) do
+          = comment.user.nickname
       .Comment-box__header__user__id
-        = comment.user.name
+        = link_to user_path(comment.user.id) do
+          = comment.user.name
     .Comment-box__header__edit
       - if user_signed_in? && current_user.id == comment.user_id
         = link_to post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: '削除しますか？' } do

@@ -15,12 +15,24 @@
         .FormField__label--normal
           = f.label :nickname
         .FormField__input--normal
-          = f.text_field :nickname, autofocus: true
+          = f.text_field :nickname
+      .FormField
+        .FormField__label--normal
+          = f.label :icon
+        .FormField__input--normal
+          = f.label :icon,"アイコンを選択", class: "icon_input_btn"
+          = f.file_field :icon, class: "icon_form"
       .FormField
         .FormField__label--normal
           = f.label :email
         .FormField__input--normal
           = f.email_field :email
+      .FormField
+        .FormField__label--normal
+          = f.label :profile
+          %i (500文字以内)
+        .FormField__input--normal
+          = f.text_area :profile
       .FormField
         .FormField__label--normal
           = f.label :password

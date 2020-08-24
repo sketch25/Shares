@@ -1,20 +1,31 @@
 %article.Post-box
   %header.Post-box__header
-    = icon('fas', 'circle', class: "Post-box__header__icon")
-    .Post-box__header__user
-      .Post-box__header__user__nickname
-        = post.user.nickname
-      .Post-box__header__user__id
-        = post.user.name
-    .Post-box__header__title
-      = link_to  post_path(post.id) do
-        = post.title
-    .Post-box__header__edit
-      - if user_signed_in? && current_user.id == post.user_id
-        = link_to  post_path(post.id), method: :delete, data: { confirm: '削除しますか？' } do
-          = icon('fas', 'trash',class: "Post-box__header__edit__icon") 
-        = link_to  edit_post_path(post.id) do
-          = icon('fas', 'ellipsis-v',class: "Post-box__header__edit__icon") 
+    .Post-box__header__top
+      = link_to user_path(post.user.id) do
+        - if post.user.icon?
+          = image_tag post.user.icon.url, class:"Post-box__header__top__icon"
+        - else
+          = icon('fas', 'circle', class: "Post-box__header__top__icon")
+      .Post-box__header__top__user
+        .Post-box__header__top__user__nickname
+          = link_to user_path(post.user.id) do
+            = post.user.nickname
+        .Post-box__header__top__user__id
+          = link_to user_path(post.user.id) do
+            = post.user.name
+      .Post-box__header__top__type
+        - if post.type == 1
+          【質問】
+      .Post-box__header__top__edit
+        - if user_signed_in? && current_user.id == post.user_id
+          = link_to  post_path(post.id), method: :delete, data: { confirm: '削除しますか？' } do
+            = icon('fas', 'trash',class: "Post-box__header__top__edit__icon") 
+          = link_to  edit_post_path(post.id) do
+            = icon('fas', 'ellipsis-v',class: "Post-box__header__top__edit__icon") 
+    .Post-box__header__middle
+      .Post-box__header__middle__title
+        = link_to  post_path(post.id) do
+          = post.title
   .Post-box__main
     %p.Post-box__main__text
       = safe_join(post.content.split("\n"),tag(:br))
@@ -34,7 +45,11 @@
           = icon('fas', 'reply',class: "Post-box__footer__actions__reply__icon") 
         .Post-box__footer__actions__reply__count
           = post.comments.count
-      .Post-box__footer__actions__favo
-        = icon('fas', 'heart', class: "Post-box__footer__actions__favo__icon") 
-        .Post-box__footer__actions__favo__count
+      .Post-box__footer__actions__up
+        = icon('far', 'thumbs-up', class: "Post-box__footer__actions__up__icon") 
+        .Post-box__footer__actions__up__count
+          3
+      .Post-box__footer__actions__down
+        = icon('far', 'thumbs-down', class: "Post-box__footer__actions__down__icon") 
+        .Post-box__footer__actions__down__count
           3

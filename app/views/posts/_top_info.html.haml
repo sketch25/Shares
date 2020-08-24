@@ -12,10 +12,25 @@
 
     
         
-    .info
-      .info__icons
-        = link_to new_post_path do
-          = icon('far', 'edit', class: "info__icons__icon")
-        = icon('fas', 'home', class: "info__icons__icon")
-        = link_to edit_user_path(current_user) do
-          = icon('fas', 'circle', class: "info__icons__icon")
+
+    - if user_signed_in?
+      .info
+        .info__icons
+          .info__icons__icon
+            = link_to new_post_path do
+              = icon('far', 'edit', class: "info__icons__icon-btn")
+          .info__icons__icon
+            = link_to user_path(current_user) do
+              = icon('fas', 'home', class: "info__icons__icon-btn")
+          .info__icons__icon
+            = link_to edit_user_path(current_user) do
+              - if current_user.icon?
+                = image_tag current_user.icon.url, class:"info__icons__icon-btn"
+              - else
+                = icon('fas', 'circle', class: "info__icons__icon-btn")
+    - else
+      .submit
+        = link_to new_user_registration_path do
+          %input{type: "submit", value: "新規登録", class: "submit__new"}
+        = link_to new_user_session_path do
+          %input{type: "submit", value: "ログイン", class: "submit__login"}

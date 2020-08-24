@@ -1,17 +1,28 @@
 %nav.Side-items
-  .user
-    = icon('fas', 'circle', class: "user__icon")
-    .user__name
-      .user__name__nickname
-        = current_user.nickname
-      .user__name__id
-        = current_user.name
-  %ul.posts
-    投稿一覧
-    - current_user.posts.reverse[0..4].each do |post|
-      %li.posts__post
-        = link_to  post_path(post.id) do
-          = post.title
+  - if user_signed_in?
+    .user
+      = link_to user_path(current_user) do
+        - if current_user.icon?
+          = image_tag current_user.icon.url, class:"user__icon"
+        - else
+          = icon('fas', 'circle', class: "user__icon")
+      .user__name
+        = link_to user_path(current_user) do
+          .user__name__nickname
+            = current_user.nickname
+        = link_to user_path(current_user) do
+          .user__name__id
+            = current_user.name
+    %ul.posts
+      投稿一覧
+      - current_user.posts.reverse[0..4].each do |post|
+        %li.posts__post
+          = link_to  post_path(post.id) do
+            - if post.type == 1
+              【質問】
+              = post.title
+            - else
+              = post.title
       
   %ul.tags
     タグ一覧

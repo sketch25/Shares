@@ -1,0 +1,25 @@
+%nav.Side-items
+  %ul.posts
+    投稿一覧
+    - @user.posts.reverse[0..4].each do |post|
+      %li.posts__post
+        = link_to  post_path(post.id) do
+          - if post.type == 1
+            【質問】
+            = post.title
+          - else
+            = post.title
+    
+  %ul.tags
+    タグ一覧
+    %li.tags__tag
+      タグ(1)
+    %li.tags__tag
+      タグ(2)
+    %li.tags__tag
+      タグ(3)
+    %li.tags__tag
+      タグ(4)
+  %footer
+    %small.copyright
+      @ 2020 shares.com

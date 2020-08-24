@@ -5,14 +5,18 @@
       %main
         .Posts-list
           = render @post
-          .Comments
-            = icon('fas', 'reply', class: "Comments__icon")
-            .Comments-list
-              = render @comments
+          - if @comments.present?
+            .Comments
+              = icon('fas', 'reply', class: "Comments__icon")
+              .Comments-list
+                = render @comments
           - if user_signed_in?
             .Commentform-box
               .Commentform-box__header
-                = icon('fas', 'circle', class: "Commentform-box__header__icon")
+                - if current_user.icon?
+                  = image_tag current_user.icon.url, class:"Commentform-box__header__icon"
+                -else
+                  = icon('fas', 'circle', class: "Commentform-box__header__icon")
                 .Commentform-box__header__user
                   .Commentform-box__header__user__nickname
                     = current_user.nickname
