@@ -60,6 +60,41 @@
       padding: 10px;
       letter-spacing: 1px;
     }
+    textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      letter-spacing: 1px;
+      height: 550px;
+      resize: none;
+    }
+    .icon_input_btn{
+      box-sizing: border-box;
+      display: block;
+      background-color: #38aef0;
+      width: 50%;
+      letter-spacing: 1px;
+      border-radius: 3px;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+    }
+    .icon_input_btn:hover{
+      box-sizing: border-box;
+      display: block;
+      background-color: #2e8ec5;
+      width: 50%;
+      letter-spacing: 1px;
+      border-radius: 3px;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+    }
+    .icon_form{
+      display: none;
+    }
     .field_with_errors {
       position: relative;
 
@@ -93,7 +128,15 @@
   margin-top: 20px;
   color: #fff;
   background-color: #38aef0;
+  cursor: pointer;
 }
+.UserButton:hover {
+  margin-top: 20px;
+  color: #fff;
+  background-color: #2e8ec5;
+  cursor: pointer;
+}
+
 
 #error_explanation {
   margin: 20px 0;
@@ -117,5 +160,137 @@
     margin: 0;
     padding: 0;
     font-size: 13px;
+  }
+}
+
+.User {
+  display: flex;
+  width: 100%;
+  &__icon {
+    font-size: 90px;
+    margin: 10px;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    color: #919191;
+  }
+  &__info {
+    margin: 10px 5px 16px 0;
+    &__top {
+      display: flex;
+      margin-bottom: 16px;
+      margin-top: 5px;
+      &__name {
+        &__nickname {
+          font-size: 22px;
+          font-weight: 700;
+        }
+        &__id {
+          font-size: 18px;
+          padding-left: 3px;
+          color: #313131;
+        }
+      }
+    &__follow {
+      margin: auto 0 auto auto;
+      &__btn {
+        font-weight: 500;
+        margin-left: 8px;
+        height: 36px;
+        width: 120px;
+        font-size: 16px;
+        background-color: #38aef0;
+        color: #ffffff;
+        border: none;
+        border-radius: 3px 3px 3px 3px;
+        cursor: pointer;
+      }
+      &__btn:hover {
+        font-weight: 500;
+        margin-left: 8px;
+        height: 36px;
+        width: 120px;
+        font-size: 16px;
+        background-color: #3088bb;
+        color: #ffffff;
+        border: none;
+        border-radius: 3px 3px 3px 3px;
+        cursor: pointer;
+      }
+      // &__login {
+      //   font-weight: 900;
+      //   margin-left: 8px;
+      //   height: 36px;
+      //   width: 80px;
+      //   font-size: 16px;
+      //   background-color: #ffffff;
+      //   color: #38aef0;
+      //   border: 1px solid #38aef0;
+      //   cursor: pointer;
+      // }
+      // &__login:hover {
+      //   font-weight: 900;
+      //   margin-left: 8px;
+      //   height: 36px;
+      //   width: 80px;
+      //   font-size: 16px;
+      //   background-color: #e7e7e7;
+      //   color: #38aef0;
+      //   border: 1px solid #38aef0;
+      //   cursor: pointer;
+      // }
+      
+    }
+    }
+    &__middle {
+      display: flex;
+      font-size: 18px;
+      margin-bottom: 8px;
+      &__value {
+        margin-right: 16px;
+        padding: 0 2px;
+        cursor: pointer;
+      }
+      &__value:hover {
+        padding: 0 2px;
+        margin-right: 16px;
+        margin-bottom: -1px;
+        border-bottom:1px black solid ;
+        cursor: pointer;
+      }
+    }
+      &__profile {
+        max-height: 240px;
+        width: 820px;
+        word-wrap: break-word;
+      }
+  }
+}
+.field {
+  display: flex;
+}
+
+.Posts-type {
+  display: flex;
+  width: 100%;
+  height: 48px;
+  border-bottom: 2px solid #dbdbdb;
+  margin-bottom: 24px;
+  &__value {
+    width: 100px;
+    padding: auto auto auto auto;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+  }
+  &__value:hover {
+    width: 100px;
+    padding: auto auto auto auto;
+    border: 2px solid #dbdbdb;
+    background-color: #c9c9c9;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
   }
 }

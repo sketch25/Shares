@@ -1,0 +1,43 @@
+.wrapper
+  = render "posts/top_info"
+  .Body
+    .Body__items 
+      %main
+        .User
+          - if @user.icon?
+            = image_tag @user.icon.url, class:"User__icon"
+          -else
+            = icon('fas', 'circle', class: "User__icon")
+          .User__info
+            .User__info__top
+              .User__info__top__name
+                .User__info__top__name__nickname
+                  = @user.nickname
+                .User__info__top__name__id
+                  = @user.name
+              .User__info__top__follow
+                %input{type:"submit", value:"フォロー", class: "User__info__top__follow__btn"}
+            .User__info__middle
+              .User__info__middle__value
+                記事89件
+              .User__info__middle__value
+                フォロー15人
+              .User__info__middle__value
+                フォロワー22222人
+            .User__info__profile
+              = @user.profile
+        .field
+          .Posts-list
+            .Posts-type
+              .Posts-type__value
+                All
+              .Posts-type__value
+                記事
+              .Posts-type__value
+                質問
+              .Posts-type__value
+                回答
+              .Posts-type__value
+                いいね
+            = render @posts
+          = render "side_bar"
