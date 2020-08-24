@@ -25,7 +25,31 @@
       = comment.created_at.strftime("%Y/%m/%d %H:%M")
   .Comment-box__footer
     .Comment-box__footer__actions
-      .Comment-box__footer__actions__favo
-        = icon('fas', 'heart', class: "Comment-box__footer__actions__favo__icon") 
-        .Comment-box__footer__actions__favo__count
-          3
+      - if user_signed_in?
+        .Comment-box__footer__actions__up
+          - if current_user.already_comgood?(comment)
+            = link_to "/posts/#{comment.post.id}/comments/#{comment.id}/comgoods/#{comment.comgoods.ids}", method: :delete do
+              = icon('far', 'thumbs-up', class: "Comment-box__footer__actions__up__icon-on") 
+          - else
+            = link_to "/posts/#{comment.post.id}/comments/#{comment.id}/comgoods", method: :post do
+              = icon('far', 'thumbs-up', class: "Comment-box__footer__actions__up__icon") 
+          .Comment-box__footer__actions__up__count
+            = comment.comgoods.count
+        .Comment-box__footer__actions__down
+          - if current_user.already_combad?(comment)
+            = link_to "/posts/#{comment.post.id}/comments/#{comment.id}/combads/#{comment.comgoods.ids}", method: :delete do
+              = icon('far', 'thumbs-down', class: "Comment-box__footer__actions__down__icon-on") 
+          -else
+            = link_to "/posts/#{comment.post.id}/comments/#{comment.id}/combads", method: :post do
+              = icon('far', 'thumbs-down', class: "Comment-box__footer__actions__down__icon") 
+          .Comment-box__footer__actions__down__count
+            = comment.combads.count
+      - else
+        .Comment-box__footer__actions__up
+          = icon('far', 'thumbs-up', class: "Comment-box__footer__actions__up__icon") 
+          .Comment-box__footer__actions__up__count
+            = comment.comgoods.count
+        .Comment-box__footer__actions__down
+          = icon('far', 'thumbs-down', class: "Comment-box__footer__actions__down__icon") 
+          .Comment-box__footer__actions__down__count
+            = comment.combads.count

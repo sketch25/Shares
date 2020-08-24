@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:user).order("created_at DESC")
+    # @like = Like.new
   end
 
   def new
@@ -27,6 +28,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments.includes(:user)
     @comment = @post.comments.new
+    # @like = Like.new
   end
 
   def edit

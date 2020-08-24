@@ -12,6 +12,10 @@ a {
   color: black;
 }
 
+button {
+  display: none;
+}
+
 .Top-info {
   height: 54px;
   width: 100%;
@@ -293,6 +297,9 @@ a {
             margin-left: 5px;
             &__icon {
               cursor: pointer;
+              &-on {
+                color: #d65f4c;
+              }
             }
             &__count {
               margin-left: 3px;
@@ -304,6 +311,9 @@ a {
             margin-left: 5px;
             &__icon {
               cursor: pointer;
+              &-on {
+                color: #38aef0;
+              }
             }
             &__count {
               margin-left: 3px;
@@ -420,23 +430,39 @@ a {
           &__footer {
             height: 32px;
             display: flex;
-            padding: 0 16px;
+            padding: 8px 5px;
             border-top: 0.5px solid #c4c4c4;
             align-items: center;
             &__actions {
               display: flex;
               margin:0 0 0 auto;
               
-              &__favo {
+              &__up {
                 display: flex;
                 align-items: center;
                 margin-left: 5px;
                 &__icon {
                   cursor: pointer;
+                  &-on {
+                    color: #d65f4c;
+                  }
                 }
                 &__count {
                   margin-left: 3px;
-    
+                }
+              }
+              &__down {
+                display: flex;
+                align-items: center;
+                margin-left: 5px;
+                &__icon {
+                  cursor: pointer;
+                  &-on {
+                    color: #38aef0;
+                  }
+                }
+                &__count {
+                  margin-left: 3px;
                 }
               }
             }

@@ -45,11 +45,31 @@
           = icon('fas', 'reply',class: "Post-box__footer__actions__reply__icon") 
         .Post-box__footer__actions__reply__count
           = post.comments.count
-      .Post-box__footer__actions__up
-        = icon('far', 'thumbs-up', class: "Post-box__footer__actions__up__icon") 
-        .Post-box__footer__actions__up__count
-          3
-      .Post-box__footer__actions__down
-        = icon('far', 'thumbs-down', class: "Post-box__footer__actions__down__icon") 
-        .Post-box__footer__actions__down__count
-          3
+      - if user_signed_in?
+        .Post-box__footer__actions__up
+          - if current_user.already_liked?(post)
+            = link_to "/posts/#{post.id}/likes/#{post.likes.ids}", method: :delete  do
+              = icon('far', 'thumbs-up', class: "Post-box__footer__actions__up__icon-on") 
+          - else
+            = link_to post_likes_path(post.id), method: :post do
+              = icon('far', 'thumbs-up', class: "Post-box__footer__actions__up__icon") 
+          .Post-box__footer__actions__up__count
+            = post.likes.count 
+        .Post-box__footer__actions__down
+          - if current_user.already_bad?(post)
+            = link_to "/posts/#{post.id}/bads/#{post.bads.ids}", method: :delete  do
+              = icon('far', 'thumbs-down', class: "Post-box__footer__actions__down__icon-on") 
+          - else
+            = link_to post_bads_path(post.id), method: :post do
+              = icon('far', 'thumbs-down', class: "Post-box__footer__actions__down__icon") 
+          .Post-box__footer__actions__down__count
+            = post.bads.count
+      - else
+        .Post-box__footer__actions__up
+          = icon('far', 'thumbs-up', class: "Post-box__footer__actions__down__icon") 
+          .Post-box__footer__actions__up__count
+            = post.likes.count
+        .Post-box__footer__actions__down
+          = icon('far', 'thumbs-down', class: "Post-box__footer__actions__down__icon") 
+          .Post-box__footer__actions__down__count
+            = post.bads.count
