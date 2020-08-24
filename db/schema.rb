@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_061732) do
+ActiveRecord::Schema.define(version: 2020_08_24_125225) do
+
+  create_table "bads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_bads_on_post_id"
+    t.index ["user_id"], name: "index_bads_on_user_id"
+  end
+
+  create_table "combads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "comment_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_combads_on_comment_id"
+    t.index ["user_id"], name: "index_combads_on_user_id"
+  end
+
+  create_table "comgoods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "comment_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comgoods_on_comment_id"
+    t.index ["user_id"], name: "index_comgoods_on_user_id"
+  end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
@@ -74,6 +101,12 @@ ActiveRecord::Schema.define(version: 2020_08_24_061732) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bads", "posts"
+  add_foreign_key "bads", "users"
+  add_foreign_key "combads", "comments"
+  add_foreign_key "combads", "users"
+  add_foreign_key "comgoods", "comments"
+  add_foreign_key "comgoods", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"

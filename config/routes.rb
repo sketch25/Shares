@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root "posts#index"
   resources :users, only: [:edit, :update, :show]
   resources :posts do
-    resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :likes, only: [:create, :destroy]
+    resources :bads, only: [:create, :destroy]
+    resources :comments, only: [:index, :new, :create, :edit, :update, :destroy] do
+      resources :comgoods, only: [:create, :destroy]
+      resources :combads, only: [:create, :destroy]
+    end
   end
 end
