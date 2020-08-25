@@ -33,12 +33,10 @@
       = post.created_at.strftime("%Y/%m/%d %H:%M")
   .Post-box__footer
     .Post-box__footer__tags
-      .Post-box__footer__tags__tag
-        タグ１
-      .Post-box__footer__tags__tag
-        タグ２
-      .Post-box__footer__tags__tag
-        タグ３
+      - post.tags.each do|tag|
+        .Post-box__footer__tags__tag
+          = render_with_hashtags("#"+tag.name)
+     
     .Post-box__footer__actions
       .Post-box__footer__actions__reply
         = link_to  post_path(post.id) do

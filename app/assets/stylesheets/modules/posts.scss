@@ -39,7 +39,7 @@ button {
     }
     
     .search-posts{
-      width: 300;
+      width: 300px;
       display: flex;
       &__input-box {
         width: 250px;
@@ -59,8 +59,18 @@ button {
           font-size: 1rem;
           position: absolute;
           cursor: pointer;
-          top: 3px;
+          top: 7px;
           right: 10px;
+        }
+        &__btn {
+          border: none;
+          background-color: transparent;
+          font-size: 1rem;
+          position: absolute;
+          cursor: pointer;
+          height: 30px;
+          width: 35px;
+          right: 0;
         }
       }
     }
@@ -271,8 +281,22 @@ button {
         align-items: center;
         &__tags {
           display: flex;
-          &__tag {
+          &__input {
+            height: 40px;
+            width: 520px;
+            border: 0.5px solid #c4c4c4;
+            padding:0 2px;
+            background-color: #fafafa;
+
+          }
+          &__tag, a {
+            color: #757575;
             margin-right: 5px;
+          }
+          &__tag a:hover {
+            color: #5e5e5e;
+            margin-right: 5px;
+            border-bottom: 1px solid #5e5e5e;
           }
         }
         &__actions {
@@ -610,10 +634,16 @@ button {
         color: #7e7e7e;
         font-size: 18px;
         margin: 5px 0;
-        &__tag {
-          margin: 2px 5px;
+        &__tag, a {
+          margin: 2px 2px;
           font-size: 16px;
           color: #000000;
+        }
+        &__tag a:hover {
+          margin: 2px 2px;
+          font-size: 16px;
+          color: #7e7e7e;
+          border-bottom: 1px solid #7e7e7e;
         }
 
       }

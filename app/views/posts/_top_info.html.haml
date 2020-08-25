@@ -4,14 +4,14 @@
       = link_to "/" do
         Shares
 
-    %form.search-posts
-      .search-posts__input-box
-        %input{type: "text", class: "search-posts__input-box__text", placeholder: "検索"}
-        %label{class: "search-posts__input-box__image"}
-          = icon('fas', 'search')
-
-    
+    .search-posts
+      = form_with url: search_posts_path, local: true, class: "search-posts__input-box", method: :get do |f|
+        = f.text_field :keyword, placeholder: "検索", class: "search-posts__input-box__text"
+        = icon('fas', 'search', class: "search-posts__input-box__image")
+        = f.submit "", class: "search-posts__input-box__btn"
         
+
+  
 
     - if user_signed_in?
       .info
