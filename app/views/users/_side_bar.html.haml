@@ -12,14 +12,9 @@
     
   %ul.tags
     タグ一覧
-    %li.tags__tag
-      タグ(1)
-    %li.tags__tag
-      タグ(2)
-    %li.tags__tag
-      タグ(3)
-    %li.tags__tag
-      タグ(4)
+    - @tags.first(10).each do |tag|
+      %li.tags__tag
+        = render_with_hashtags("#"+tag.name)+"(#{tag.post_tags.count})"
   %footer
     %small.copyright
       @ 2020 shares.com

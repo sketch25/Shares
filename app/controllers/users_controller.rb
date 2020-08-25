@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.includes(:user).order("created_at DESC")
+    @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
     # @like = Like.new
   end
 

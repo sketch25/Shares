@@ -29,11 +29,6 @@
       = f.text_area :content, class: 'Post-box__main-input' , placeholder: '投稿内容を入力'
     .Post-box__footer
       .Post-box__footer__tags
-        .Post-box__footer__tags__tag
-          タグ１
-        .Post-box__footer__tags__tag
-          タグ２
-        .Post-box__footer__tags__tag
-          タグ３
+        = f.text_field :hashtag, class:"Post-box__footer__tags__input",placeholder: 'タグを入力'
       .Post-box__footer__submit
         = f.submit '送信', class: 'Post-box__footer__submit__btn'
