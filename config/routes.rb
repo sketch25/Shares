@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root "posts#index"
   get '/post/tag/:name', to:"posts#tag"
-  resources :users, only: [:edit, :update, :show] 
+  resources :users, only: [:edit, :update, :show] do
+    get 'show_following'
+    get 'show_follower'
+  end
+  resources :relationships, only: [:create, :destroy]
   resources :posts do
     collection do
       get 'search'

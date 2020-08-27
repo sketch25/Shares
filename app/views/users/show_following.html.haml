@@ -24,7 +24,7 @@
                   - if @evaluate == "none"
                     評価はまだありません。
                   - else
-                    = @evaluate
+                    = @evaluate 
                     = "(#{@likes_count + @comgoods_count})"
               .User__info__top__follow
                 = render "relationships/follow_button", user: @user
@@ -33,23 +33,32 @@
                 = link_to user_path(@user.id) do
                   記事#{@posts.count}件
               .User__info__middle__value
-                = link_to "フォロー#{@user.followings.count}人", "#{@user.id}/show_following", user: @user
+                = link_to "フォロー#{@user.followings.count}人", "show_following", user: @user
               .User__info__middle__value
-                = link_to "フォロワー#{@user.followers.count}人", "#{@user.id}/show_follower", user: @user
+                = link_to "フォロワー#{@user.followers.count}人", "show_follower", user: @user
             .User__info__profile
               = @user.profile
         .field
-          .Posts-list
-            .Posts-type
-              .Posts-type__value
-                All
-              .Posts-type__value
-                記事
-              .Posts-type__value
-                質問
-              .Posts-type__value
-                回答
-              .Posts-type__value
-                いいね
-            = render @posts
+          .Users-list
+            %h1
+              フォロー
+            %article.User-box
+              - @user.followings.each do |user|
+                %header.User-box__header
+                  .User-box__header__top
+                    = link_to user_path(user.id) do
+                      - if user.icon?
+                        = image_tag user.icon.url, class:"User-box__header__top__icon"
+                      - else
+                        = icon('fas', 'circle', class: "User-box__header__top__icon")
+                    .User-box__header__top__user
+                      .User-box__header__top__user__nickname
+                        = link_to user_path(user.id) do
+                          = user.nickname
+                      .User-box__header__top__user__id
+                        = link_to user_path(user.id) do
+                          = user.name
+                    .User__info__top__follow
+                      = render "relationships/follow_button", user: user
+
           = render "side_bar"

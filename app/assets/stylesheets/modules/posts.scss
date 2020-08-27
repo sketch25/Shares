@@ -322,7 +322,7 @@ button {
             &__icon {
               cursor: pointer;
               &-on {
-                color: #d65f4c;
+                color: #38aef0;
               }
             }
             &__count {
@@ -468,7 +468,7 @@ button {
                 &__icon {
                   cursor: pointer;
                   &-on {
-                    color: #d65f4c;
+                    color: #38aef0;
                   }
                 }
                 &__count {
@@ -597,7 +597,7 @@ button {
         display: flex;
         
         &__icon {
-          padding-left: 5px;
+          margin-left: 5px;
           font-size: 56px;
           color: #919191;
           object-fit: cover;

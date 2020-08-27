@@ -4,5 +4,11 @@
     .Body__items 
       %main
         .Posts-list
+          - if user_signed_in?
+            - @posts = current_user.posts.includes(:user).order("created_at DESC")
+            - current_user.followings.each do |user|
+              - posts = user.posts.includes(:user).order("created_at DESC")
+              - @posts += posts
+              - @posts.sort_by! { |a| a[:created_at] }.reverse!
           = render @posts
       = render "side_bar"
