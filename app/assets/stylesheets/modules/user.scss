@@ -192,9 +192,54 @@
           color: #313131;
         }
       }
+      &__box {
+        padding-left: 8px;
+        &__evaluate{
+          position: relative;
+          z-index: 0;
+          display: inline-block;
+          white-space: nowrap;
+          color: #cccccc98; 
+          font-size: 24px;
+        }
+        
+        &__evaluate:before, &__evaluate:after{
+          content: '★★★★★';
+        }
+        
+        &__evaluate:after{
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          overflow: hidden;
+          white-space: nowrap;
+          color: #a3a3a3; /* イエローカラー 自由に設定化 */
+        }
+        
+        &__evaluate[rate="5.0"]:after{ width: 100%; } /* 星5 */
+        &__evaluate[rate="4.5"]:after{ width: 90%; } /* 星4.5 */
+        &__evaluate[rate="4.0"]:after{ width: 80%; } /* 星4 */
+        &__evaluate[rate="3.5"]:after{ width: 70%; } /* 星3.5 */
+        &__evaluate[rate="3.0"]:after{ width: 60%; } /* 星3 */
+        &__evaluate[rate="2.5"]:after{ width: 50%; } /* 星2.5 */
+        &__evaluate[rate="2.0"]:after{ width: 40%; } /* 星2 */
+        &__evaluate[rate="1.5"]:after{ width: 30%; } /* 星1.5 */
+        &__evaluate[rate="1.0"]:after{ width: 20%; } /* 星1 */
+        &__evaluate[rate="0.5"]:after{ width: 10%; } /* 星0.5 */
+        &__evaluate[rate="0.0"]:after{ width: 0%; } /* 星0 */
+        &__evaluate[rate="none"]:after{ width: 0%; } /* 星0 */
+
+      &__count {
+        color: #a3a3a3; 
+        font-size: 16px;
+        padding-left: 3px;
+
+      }
+      }
     &__follow {
       margin: auto 0 auto auto;
-      &__btn {
+      &__follow-now {
         font-weight: 500;
         margin-left: 8px;
         height: 36px;
@@ -206,7 +251,7 @@
         border-radius: 3px 3px 3px 3px;
         cursor: pointer;
       }
-      &__btn:hover {
+      &__follow-now:hover {
         font-weight: 500;
         margin-left: 8px;
         height: 36px;
@@ -218,28 +263,28 @@
         border-radius: 3px 3px 3px 3px;
         cursor: pointer;
       }
-      // &__login {
-      //   font-weight: 900;
-      //   margin-left: 8px;
-      //   height: 36px;
-      //   width: 80px;
-      //   font-size: 16px;
-      //   background-color: #ffffff;
-      //   color: #38aef0;
-      //   border: 1px solid #38aef0;
-      //   cursor: pointer;
-      // }
-      // &__login:hover {
-      //   font-weight: 900;
-      //   margin-left: 8px;
-      //   height: 36px;
-      //   width: 80px;
-      //   font-size: 16px;
-      //   background-color: #e7e7e7;
-      //   color: #38aef0;
-      //   border: 1px solid #38aef0;
-      //   cursor: pointer;
-      // }
+      &__follows {
+        font-weight: 900;
+        margin-left: 8px;
+        height: 36px;
+        width: 120px;
+        font-size: 16px;
+        background-color: #ffffff;
+        color: #38aef0;
+        border: 1px solid #38aef0;
+        cursor: pointer;
+      }
+      &__follows:hover {
+        font-weight: 900;
+        margin-left: 8px;
+        height: 36px;
+        width: 120px;
+        font-size: 16px;
+        background-color: #e7e7e7;
+        color: #38aef0;
+        border: 1px solid #38aef0;
+        cursor: pointer;
+      }
       
     }
     }
@@ -269,7 +314,58 @@
 }
 .field {
   display: flex;
+  .Users-list{
+    height: 100%;
+    width: 610px;
+    margin-right: 25px;
+    h1 {
+      margin-bottom: 16px;
+      font-size: 20px;
+      color: #4e4e4e;
+    }
+    .User-box {
+      background-color: #ffffff;
+      width: 100%;
+      border: 0.5px solid #c4c4c4;
+      border-radius: 3px 3px 3px 3px;
+      margin-bottom: 40px;
+      &__header {
+        padding: 12px 5px 12px 5px;
+        border-bottom: solid 0.5px #c4c4c4;
+        width: 100%;
+        &__top {
+          display: flex;
+          &__icon {
+            font-size: 32px;
+            height: 32px;
+            width: 32px;
+            color: #919191;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+          &__user {
+            padding: 0 10px;
+            width: 132px;
+            display: flex;
+            flex-direction: column;
+            &__nickname {
+              padding: 0;
+              font-size:  12px;
+            }
+            &__id {
+              font-size: 8px;
+              color: #313131;
+            }
+          }
+          &__follow {
+            margin: auto 0 auto auto;
+          }
+        }
+      }
+    }
+  }
 }
+
 
 .Posts-type {
   display: flex;

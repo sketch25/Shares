@@ -3,8 +3,6 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:user).order("created_at DESC")
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    # @like = Like.new
-    # binding.pry
   end
 
   def new
@@ -34,7 +32,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments.includes(:user)
     @comment = @post.comments.new
-    # @like = Like.new
   end
 
   def edit

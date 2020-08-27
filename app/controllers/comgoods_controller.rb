@@ -1,6 +1,9 @@
 class ComgoodsController < ApplicationController
   def create
-    # binding.pry
+    @combad = Combad.find_by(comment_id: params[:comment_id], user_id: current_user.id)
+    if @combad.present?
+      @combad.destroy
+    end
     @comgood = current_user.comgoods.create(comment_id: params[:comment_id])
     redirect_back(fallback_location: root_path)
   end
