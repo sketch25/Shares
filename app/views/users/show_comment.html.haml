@@ -33,9 +33,9 @@
                 = link_to user_path(@user.id) do
                   記事#{@posts.count}件
               .User__info__middle__value
-                = link_to "フォロー#{@user.followings.count}人", "#{@user.id}/show_following", user: @user
+                = link_to "フォロー#{@user.followings.count}人", "show_following", user: @user
               .User__info__middle__value
-                = link_to "フォロワー#{@user.followers.count}人", "#{@user.id}/show_follower", user: @user
+                = link_to "フォロワー#{@user.followers.count}人", "show_follower", user: @user
             .User__info__profile
               = @user.profile
         .field
@@ -43,20 +43,20 @@
             .Posts-type
               = link_to user_path(@user.id) do
                 .Posts-type__value
-                  .Posts-type__value__on
-                    All
-              = link_to "#{@user.id}/show_article", user: @user do
+                  All
+              = link_to "show_article", user: @user do
                 .Posts-type__value
                   記事
-              = link_to "#{@user.id}/show_question", user: @user do
+              = link_to "show_question", user: @user do
                 .Posts-type__value
                   質問
-              = link_to "#{@user.id}/show_comment", user: @user do
+              = link_to "show_comment", user: @user do
                 .Posts-type__value
-                  回答
-              = link_to "#{@user.id}/show_like", user: @user do
+                  .Posts-type__value__on
+                    回答
+              = link_to "show_like", user: @user do
                 .Posts-type__value
                   いいね
-            = render @posts
+            = render @comments
             
           = render "side_bar"

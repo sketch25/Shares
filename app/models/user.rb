@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :profile,    length: { maximum: 500 } 
+  validates :name,    length: { maximum: 16 } 
+  validates :nickname,    length: { maximum: 8 } 
 
   mount_uploader :icon, IconUploader
   has_many :posts, dependent: :destroy
@@ -15,9 +17,9 @@ class User < ApplicationRecord
   has_many :bads, dependent: :destroy
   has_many :bad_posts, through: :bads, source: :post
   has_many :comgoods, dependent: :destroy
-  has_many :comgood_comments, through: :comgoods, source: :comments
+  has_many :comgood_comments, through: :comgoods, source: :comment
   has_many :combad, dependent: :destroy
-  has_many :combad_comments, through: :combads, source: :comments
+  has_many :combad_comments, through: :combads, source: :comment
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
@@ -93,6 +95,11 @@ class User < ApplicationRecord
         return 5.0.to_f
       end
     end
+  end
+
+  def self.posts_comments_sort(posts, comments)
+    posts_comments_sort = posts + comments
+    return posts_comments_sort.sort_by! { |a| a[:created_at] }.reverse!
   end
 
   def follow(other_user)

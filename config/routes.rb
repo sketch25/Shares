@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :show] do
     get 'show_following'
     get 'show_follower'
+    get 'show_article'
+    get 'show_comment'
+    get 'show_like'
+    get 'show_question'
   end
   resources :relationships, only: [:create, :destroy]
   resources :posts do

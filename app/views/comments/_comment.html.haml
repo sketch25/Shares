@@ -12,6 +12,9 @@
       .Comment-box__header__user__id
         = link_to user_path(comment.user.id) do
           = comment.user.name
+    .Comment-box__header__title
+      = link_to post_path(comment.post.id) do
+        @#{comment.post.title}
     .Comment-box__header__edit
       - if user_signed_in? && current_user.id == comment.user_id
         = link_to post_comment_path(comment.post.id, comment.id), method: :delete, data: { confirm: '削除しますか？' } do
