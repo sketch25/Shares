@@ -379,14 +379,17 @@
     text-align: center;
     line-height: 48px;
     cursor: pointer;
+    &__on {
+      border-bottom: 2px solid #38aef0;
+    }
   }
   &__value:hover {
     width: 100px;
     padding: auto auto auto auto;
-    border: 2px solid #dbdbdb;
     background-color: #c9c9c9;
     text-align: center;
     line-height: 48px;
     cursor: pointer;
+    
   }
 }

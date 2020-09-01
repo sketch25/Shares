@@ -13,7 +13,11 @@ class Post < ApplicationRecord
  
   def self.search(search)
     if search != ""
+      if search == "質問"
+        Post.where(type: 1)
+      else
       Post.where('content LIKE(?) or title LIKE(?) or hashtag LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%")
+      end
     else
       Post.all
     end

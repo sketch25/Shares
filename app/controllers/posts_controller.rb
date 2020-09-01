@@ -50,7 +50,6 @@ class PostsController < ApplicationController
   end
 
   def search
-    # binding.pry
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
     @posts = Post.search(params[:keyword]).includes(:user).order("created_at DESC")
   end
@@ -60,7 +59,6 @@ class PostsController < ApplicationController
     @tag = Tag.find_by(name: params[:name])
     tag =  @tag.name
     @posts = Post.where('hashtag LIKE(?)', "%#{tag}%").includes(:user).order("created_at DESC")
-    # binding.pry
   end
 
   private
