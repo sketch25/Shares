@@ -15,11 +15,11 @@ class UsersController < ApplicationController
     @posts = @user.posts.includes(:user).order("created_at DESC")
     @comments = @user.comments.includes(:user)
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    @likes_count = User.likes_count(@posts)
+    @goods_count = User.goods_count(@posts)
     @bads_count = User.bads_count(@posts)
     @comgoods_count = User.comgoods_count(@comments)
     @combads_count = User.combads_count(@comments)
-    @evaluate = User.evaluate_user(@likes_count, @bads_count, @comgoods_count, @combads_count)
+    @evaluate = User.evaluate_user(@goods_count, @bads_count, @comgoods_count, @combads_count)
   end
   
   def show_following
@@ -28,11 +28,11 @@ class UsersController < ApplicationController
     @posts = @user.posts.includes(:user).order("created_at DESC")
     @comments = @user.comments.includes(:user)
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    @likes_count = User.likes_count(@posts)
+    @goods_count = User.goods_count(@posts)
     @bads_count = User.bads_count(@posts)
     @comgoods_count = User.comgoods_count(@comments)
     @combads_count = User.combads_count(@comments)
-    @evaluate = User.evaluate_user(@likes_count, @bads_count, @comgoods_count, @combads_count)
+    @evaluate = User.evaluate_user(@goods_count, @bads_count, @comgoods_count, @combads_count)
   end
 
   def show_follower
@@ -41,11 +41,11 @@ class UsersController < ApplicationController
     @posts = @user.posts.includes(:user).order("created_at DESC")
     @comments = @user.comments.includes(:user)
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    @likes_count = User.likes_count(@posts)
+    @goods_count = User.goods_count(@posts)
     @bads_count = User.bads_count(@posts)
     @comgoods_count = User.comgoods_count(@comments)
     @combads_count = User.combads_count(@comments)
-    @evaluate = User.evaluate_user(@likes_count, @bads_count, @comgoods_count, @combads_count)
+    @evaluate = User.evaluate_user(@goods_count, @bads_count, @comgoods_count, @combads_count)
   end
 
   def show_article
@@ -55,11 +55,11 @@ class UsersController < ApplicationController
     @posts = @user.posts.where(type: 0).includes(:user).order("created_at DESC")
     @comments = @user.comments.includes(:user)
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    @likes_count = User.likes_count(@post)
+    @goods_count = User.goods_count(@post)
     @bads_count = User.bads_count(@post)
     @comgoods_count = User.comgoods_count(@comments)
     @combads_count = User.combads_count(@comments)
-    @evaluate = User.evaluate_user(@likes_count, @bads_count, @comgoods_count, @combads_count)
+    @evaluate = User.evaluate_user(@goods_count, @bads_count, @comgoods_count, @combads_count)
   end
 
   def show_question
@@ -69,11 +69,11 @@ class UsersController < ApplicationController
     @posts = @user.posts.where(type: 1).includes(:user).order("created_at DESC")
     @comments = @user.comments.includes(:user)
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    @likes_count = User.likes_count(@post)
+    @goods_count = User.goods_count(@post)
     @bads_count = User.bads_count(@post)
     @comgoods_count = User.comgoods_count(@comments)
     @combads_count = User.combads_count(@comments)
-    @evaluate = User.evaluate_user(@likes_count, @bads_count, @comgoods_count, @combads_count)
+    @evaluate = User.evaluate_user(@goods_count, @bads_count, @comgoods_count, @combads_count)
   end
 
   def show_comment
@@ -82,27 +82,27 @@ class UsersController < ApplicationController
     @posts = @user.posts.includes(:user).order("created_at DESC")
     @comments = @user.comments.includes(:user)
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    @likes_count = User.likes_count(@posts)
+    @goods_count = User.goods_count(@posts)
     @bads_count = User.bads_count(@posts)
     @comgoods_count = User.comgoods_count(@comments)
     @combads_count = User.combads_count(@comments)
-    @evaluate = User.evaluate_user(@likes_count, @bads_count, @comgoods_count, @combads_count)
+    @evaluate = User.evaluate_user(@goods_count, @bads_count, @comgoods_count, @combads_count)
   end
 
-  def show_like
+  def show_good
     @user = User.find(params[:user_id])
     @user_follower = @user.followers
-    @posts = @user.liked_posts.includes(:user).order("created_at DESC")
+    @posts = @user.good_posts.includes(:user).order("created_at DESC")
     @post = @user.posts.includes(:user)
     @comments = @user.comgood_comments.includes(:user).order("created_at DESC")
     @comment = @user.comments.includes(:user)
     @posts = User.posts_comments_sort(@posts, @comments)
     @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
-    @likes_count = User.likes_count(@post)
+    @goods_count = User.goods_count(@post)
     @bads_count = User.bads_count(@post)
     @comgoods_count = User.comgoods_count(@comment)
     @combads_count = User.combads_count(@comment)
-    @evaluate = User.evaluate_user(@likes_count, @bads_count, @comgoods_count, @combads_count)
+    @evaluate = User.evaluate_user(@goods_count, @bads_count, @comgoods_count, @combads_count)
   end
 
 

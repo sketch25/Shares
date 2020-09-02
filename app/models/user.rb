@@ -12,8 +12,8 @@ class User < ApplicationRecord
   mount_uploader :icon, IconUploader
   has_many :posts, dependent: :destroy
   has_many :comments
-  has_many :likes, dependent: :destroy
-  has_many :liked_posts, through: :likes, source: :post
+  has_many :goods, dependent: :destroy
+  has_many :good_posts, through: :goods, source: :post
   has_many :bads, dependent: :destroy
   has_many :bad_posts, through: :bads, source: :post
   has_many :comgoods, dependent: :destroy
@@ -25,8 +25,8 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
   
-  def already_liked?(post)
-    self.likes.exists?(post_id: post.id)
+  def already_good?(post)
+    self.goods.exists?(post_id: post.id)
   end
   def already_bad?(post)
     self.bads.exists?(post_id: post.id)
@@ -37,12 +37,12 @@ class User < ApplicationRecord
   def already_combad?(comment)
     self.combad.exists?(comment_id: comment.id)
   end
-  def self.likes_count(posts)
-    likes_count = 0
+  def self.goods_count(posts)
+    goods_count = 0
     posts.each do |post|
-      likes_count += post.likes.count
+      goods_count += post.goods.count
     end
-    return likes_count
+    return goods_count
   end
   def self.bads_count(posts)
     bads_count = 0
@@ -65,11 +65,11 @@ class User < ApplicationRecord
     end
     return combads_count
   end
-  def self.evaluate_user(likes_count, bads_count, comgoods_count, combads_count)
-    if likes_count + bads_count + comgoods_count + combads_count == 0
+  def self.evaluate_user(goods_count, bads_count, comgoods_count, combads_count)
+    if goods_count + bads_count + comgoods_count + combads_count == 0
       return "none"
     else
-      evaluate = (likes_count + comgoods_count) * 100 / (likes_count + bads_count + comgoods_count + combads_count)
+      evaluate = (goods_count + comgoods_count) * 100 / (goods_count + bads_count + comgoods_count + combads_count)
       case evaluate
       when 0..9 then
         return 0.to_f

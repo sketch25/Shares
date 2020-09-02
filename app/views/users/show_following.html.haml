@@ -25,7 +25,7 @@
                     評価はまだありません。
                   - else
                     = @evaluate 
-                    = "(#{@likes_count + @comgoods_count})"
+                    = "(#{@goods_count + @comgoods_count})"
               .User__info__top__follow
                 = render "relationships/follow_button", user: @user
             .User__info__middle

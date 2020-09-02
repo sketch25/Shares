@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get 'show_follower'
     get 'show_article'
     get 'show_comment'
-    get 'show_like'
+    get 'show_good'
     get 'show_question'
   end
   resources :relationships, only: [:create, :destroy]
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    resources :likes, only: [:create, :destroy]
+    resources :goods, only: [:create, :destroy]
     resources :bads, only: [:create, :destroy]
     resources :comments, only: [:index, :new, :create, :edit, :update, :destroy] do
       resources :comgoods, only: [:create, :destroy]
