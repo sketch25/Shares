@@ -26,7 +26,7 @@
     .User__info__middle
       .User__info__middle__value
         = link_to user_path(@user.id) do
-          記事#{@posts_count}件
+          投稿#{@posts_count}件
       .User__info__middle__value
         = link_to "フォロー#{@user.followings.count}人", "show_following", user: @user
       .User__info__middle__value

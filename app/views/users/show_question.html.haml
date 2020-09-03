@@ -3,41 +3,7 @@
   .Body
     .Body__items 
       %main
-        .User
-          = link_to user_path(@user.id) do
-            - if @user.icon?
-              = image_tag @user.icon.url, class:"User__icon"
-            -else
-              = icon('fas', 'circle', class: "User__icon")
-          .User__info
-            .User__info__top
-              .User__info__top__name
-                .User__info__top__name__nickname
-                  = link_to user_path(@user.id) do
-                    = @user.nickname
-                .User__info__top__name__id
-                  = link_to user_path(@user.id) do
-                    = @user.name
-              .User__info__top__box
-                %span{ class:"User__info__top__box__evaluate", rate:"#{@evaluate}"}
-                .User__info__top__box__count
-                  - if @evaluate == "none"
-                    評価はまだありません。
-                  - else
-                    = @evaluate
-                    = "(#{@goods_count + @comgoods_count})"
-              .User__info__top__follow
-                = render "relationships/follow_button", user: @user
-            .User__info__middle
-              .User__info__middle__value
-                = link_to user_path(@user.id) do
-                  記事#{@post.count}件
-              .User__info__middle__value
-                = link_to "フォロー#{@user.followings.count}人", "show_following", user: @user
-              .User__info__middle__value
-                = link_to "フォロワー#{@user.followers.count}人", "show_follower", user: @user
-            .User__info__profile
-              = @user.profile
+        = render "user_info"
         .field
           .Posts-list
             .Posts-type
@@ -57,6 +23,6 @@
               = link_to "show_good", user: @user do
                 .Posts-type__value
                   いいね
-            = render @posts
+            = render partial: "posts/post", collection: @posts_question
             
           = render "side_bar"

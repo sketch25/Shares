@@ -12,6 +12,5 @@ class GoodsController < ApplicationController
     @good = Good.find_by(post_id: params[:post_id], user_id: current_user.id)
     @good.delete
     redirect_back(fallback_location: root_path)
-    # notice: 'いいねを解除しました。'
   end
 end
