@@ -18,11 +18,11 @@
                   質問
               = link_to "show_comment", user: @user do
                 .Posts-type__value
-                  .Posts-type__value__on
-                    回答
+                  回答
               = link_to "show_good", user: @user do
                 .Posts-type__value
-                  いいね
-            = render @comments
+                  .Posts-type__value__on
+                    いいね
+            = render @goods_list
             
           = render "side_bar"

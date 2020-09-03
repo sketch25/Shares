@@ -25,13 +25,13 @@
                     評価はまだありません。
                   - else
                     = @evaluate
-                    = "(#{@likes_count + @comgoods_count})"
+                    = "(#{@goods_count + @comgoods_count})"
               .User__info__top__follow
                 = render "relationships/follow_button", user: @user
             .User__info__middle
               .User__info__middle__value
                 = link_to user_path(@user.id) do
-                  記事#{@posts.count}件
+                  投稿#{@posts_count}件
               .User__info__middle__value
                 = link_to "フォロー#{@user.followings.count}人", "#{@user.id}/show_following", user: @user
               .User__info__middle__value
@@ -54,7 +54,7 @@
               = link_to "#{@user.id}/show_comment", user: @user do
                 .Posts-type__value
                   回答
-              = link_to "#{@user.id}/show_like", user: @user do
+              = link_to "#{@user.id}/show_good", user: @user do
                 .Posts-type__value
                   いいね
             = render @posts

@@ -45,14 +45,14 @@
           = post.comments.count
       - if user_signed_in?
         .Post-box__footer__actions__up
-          - if current_user.already_liked?(post)
-            = link_to "/posts/#{post.id}/likes/#{post.likes.ids}", method: :delete  do
+          - if current_user.already_good?(post)
+            = link_to "/posts/#{post.id}/goods/#{post.goods.ids}", method: :delete  do
               = icon('far', 'thumbs-up', class: "Post-box__footer__actions__up__icon-on") 
           - else
-            = link_to post_likes_path(post.id), method: :post do
+            = link_to post_goods_path(post.id), method: :post do
               = icon('far', 'thumbs-up', class: "Post-box__footer__actions__up__icon") 
           .Post-box__footer__actions__up__count
-            = post.likes.count 
+            = post.goods.count 
         .Post-box__footer__actions__down
           - if current_user.already_bad?(post)
             = link_to "/posts/#{post.id}/bads/#{post.bads.ids}", method: :delete  do
@@ -66,7 +66,7 @@
         .Post-box__footer__actions__up
           = icon('far', 'thumbs-up', class: "Post-box__footer__actions__down__icon") 
           .Post-box__footer__actions__up__count
-            = post.likes.count
+            = post.goods.count
         .Post-box__footer__actions__down
           = icon('far', 'thumbs-down', class: "Post-box__footer__actions__down__icon") 
           .Post-box__footer__actions__down__count

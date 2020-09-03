@@ -1,0 +1,17 @@
+.Commentform-box
+  .Commentform-box__header
+    - if current_user.icon?
+      = image_tag current_user.icon.url, class:"Commentform-box__header__icon"
+    -else
+      = icon('fas', 'circle', class: "Commentform-box__header__icon")
+    .Commentform-box__header__user
+      .Commentform-box__header__user__nickname
+        = current_user.nickname
+      .Commentform-box__header__user__id
+        = current_user.name
+    .Commentform-box__header__title
+  = form_with model:[@post, @comment], html: {class: "Form"}, local: true do |f|
+    .Form__content
+      = f.text_area :content, class: 'Form__content__input' , placeholder: 'コメントを入力'
+    .Form__submit
+      = f.submit '送信', class: 'Form__submit__btn'

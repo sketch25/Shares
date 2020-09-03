@@ -1,49 +1,65 @@
 .AccountPage {
-  width: 980px;
-  margin: 60px auto;
-  padding: 60px;
+  width: 935px;
+  margin: 0 auto;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
+  overflow: scroll;
   display: flex;
-  justify-content: space-between;
 }
 .AccountPage__title {
-  width: 50%;
+  width: 30%;
   font-size: 14px;
   font-weight: 200;
-
-  h2 {
+  &__content {
+    height: 48px;
     margin-bottom: 10px;
     letter-spacing: 3px;
-    font-size: 40px;
-    &:after {
-      content: "";
-      display: block;
-      width: 60px;
-      margin-top: 5px;
-      border-bottom: 1px solid #38aef0;
-    }
+    line-height: 48px;
+    font-size: 18px;
+    border-left: 2px solid #000;
+    padding-left: 10px;
+
   }
 
   .Button {
+    margin-left: 5px;
     margin-top: 40px;
     color: #fff;
     background-color: #ccc;
   }
+  .Button:hover {
+    margin-left: 5px;
+    margin-top: 40px;
+    color: #fff;
+    background-color: #adadad;
+  }
 }
 
 .AccountPage__form {
-  width: 50%;
+  width: 70%;
+  padding: 5px;
 }
 
 .FormField {
   margin-bottom: 10px;
+  display: flex;
   &__label--normal {
+    width: 30%;
+    margin-right: 2%;
     padding: 10px 0;
     letter-spacing: 1px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 200;
+    text-align: right;
+    &__icon {
+      font-size: 36px;
+      height: 36px;
+      width: 36px;
+      color: #919191;
+      object-fit: cover;
+      border-radius: 50%;
+    }
     i {
       font-size: 11px;
     }
@@ -54,6 +70,8 @@
     }
   }
   &__input--normal {
+    width: 68%;
+    position: relative;
     input {
       box-sizing: border-box;
       width: 100%;
@@ -79,6 +97,8 @@
       text-decoration: none;
       text-align: center;
       cursor: pointer;
+      position: absolute;
+    	bottom: 25%;
     }
     .icon_input_btn:hover{
       box-sizing: border-box;
@@ -126,6 +146,7 @@
 
 .UserButton {
   margin-top: 20px;
+  margin-left: 32%;
   color: #fff;
   background-color: #38aef0;
   cursor: pointer;
