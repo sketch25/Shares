@@ -150,4 +150,4 @@ Things you may want to cover:
 
 ### Association
 - has_many :posts_tags
-- has_many :posts,through:post_tags
+- has_many :posts,through:post_tags# Shares_beta
