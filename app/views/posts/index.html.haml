@@ -10,5 +10,7 @@
               - posts = user.posts.includes(:user).order("created_at DESC")
               - @posts += posts
               - @posts.sort_by! { |a| a[:created_at] }.reverse!
+          - else
+            = render "post_info"
           = render @posts
       = render "side_bar"

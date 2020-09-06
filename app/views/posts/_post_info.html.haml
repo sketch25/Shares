@@ -1,0 +1,42 @@
+%article.Post-box
+  %header.Post-box__header
+    .Post-box__header__top
+      = icon('fas', 'circle', class: "Post-box__header__top__icon")
+      .Post-box__header__top__user
+        .Post-box__header__top__user__nickname
+          info
+        .Post-box__header__top__user__id
+          info
+      .Post-box__header__top__type
+        index
+      .Post-box__header__top__edit
+    .Post-box__header__middle
+      .Post-box__header__middle__title
+        このアプリの使い方
+  .Post-box__main
+    %p.Post-box__main__text
+      まずはユーザーを新規登録してください。<br>
+      ユーザー登録すると記事や質問を投稿できます。<br>
+      また、記事の詳細を開くとコメントを送信できます。<br>
+      記事やコメントでいいねを獲得しユーザーの評価を上げましょう。<br>
+      気になるユーザーがいればフォロー。<br>
+      フォローしたユーザーの記事はメインのタイムラインで確認できます。<br>
+      トップページの検索フォームやハッシュタゲでお気に入りの記事を<br>
+      見つけましょう。<br>
+
+    .Post-box__main__date
+  .Post-box__footer
+    .Post-box__footer__tags
+    .Post-box__footer__actions
+      .Post-box__footer__actions__reply
+        = icon('fas', 'reply',class: "Post-box__footer__actions__reply__icon") 
+        .Post-box__footer__actions__reply__count
+          0
+        .Post-box__footer__actions__up
+          = icon('far', 'thumbs-up', class: "Post-box__footer__actions__down__icon") 
+          .Post-box__footer__actions__up__count
+            0
+        .Post-box__footer__actions__down
+          = icon('far', 'thumbs-down', class: "Post-box__footer__actions__down__icon") 
+          .Post-box__footer__actions__down__count
+            0
