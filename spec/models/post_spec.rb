@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Post, type: :mldel do
+RSpec.describe Post, type: :model do
   describe '#create' do
     context 'can save' do
       it 'is valid with content' do

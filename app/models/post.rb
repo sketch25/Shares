@@ -25,7 +25,7 @@ class Post < ApplicationRecord
 
   after_create do
     post = Post.find_by(id: id)
-    tags = hashtag.tr('＃', '#').scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    tags = hashtag.to_s.gsub(/＃/, '#').scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |tag|
       hash = Tag.find_or_create_by(name: tag.downcase.delete('#'))
       post.tags << hash
@@ -35,7 +35,7 @@ class Post < ApplicationRecord
   before_update do
     post = Post.find_by(id: id)
     post.tags.clear
-    tags = hashtag.tr('＃', '#').scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    tags = hashtag.to_s.gsub(/＃/, '#').scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     tags.uniq.map do |tag|
       hash = Tag.find_or_create_by(name: tag.downcase.delete('#'))
       post.tags << hash

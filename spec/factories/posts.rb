@@ -3,7 +3,7 @@ FactoryBot.define do
     title {Faker::Lorem.sentence}
     content {Faker::Lorem.sentence}
     type {Faker::Number.between(from: 0, to: 1)}
-    hashtag {nil}
+    created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
     user
   end
 end
