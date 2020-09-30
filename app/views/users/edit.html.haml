@@ -20,6 +20,7 @@
           .FormField
             .FormField__label--normal
               = f.label :name
+              %i (英数字16文字以内)
             .FormField__input--normal
               = f.text_field :name, autofocus: true
           .FormField

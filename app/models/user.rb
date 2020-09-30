@@ -4,10 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { maximum: 16 } ,format: { with: /\A[a-z0-9]+\z/i }
   validates :profile,    length: { maximum: 500 } 
-  validates :name,    length: { maximum: 16 } 
-  validates :nickname,    length: { maximum: 8 } 
+  validates :nickname, presence: true,    length: { maximum: 8 } 
 
   mount_uploader :icon, IconUploader
   has_many :posts, dependent: :destroy
