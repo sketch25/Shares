@@ -22,6 +22,16 @@ services:
       - "3000:3000"
     links:
       - db
+  
+  nginx:
+    build: containers/nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./public:/app/public
+      - ./tmp:/app/tmp
+    depends_on:
+      - app
 
 volumes:
   mysql-data:
