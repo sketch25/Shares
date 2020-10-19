@@ -69,6 +69,8 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 
  gem 'mini_magick'
 
+ gem 'dotenv-rails'
+
  group :production do
   gem 'unicorn', '5.4.1'
 end
