@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: shares_production
-  username: shares
-  password: <%= ENV['SHARES_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
