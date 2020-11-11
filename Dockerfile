@@ -15,3 +15,5 @@ RUN gem install bundler
 RUN bundle install
 
 ADD . /shares
+
+RUN mkdir -p tmp/sockets
