@@ -1,0 +1,10 @@
+tmp/*
+log/*
+.git
+containers
+
+public/images/*
+public/uploads/*
+spec/fixtures/*
+
+environments/db.env
