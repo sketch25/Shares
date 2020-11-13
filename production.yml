@@ -9,9 +9,6 @@ services:
     extends:
       file: docker-compose.yml
       service: app
-    volumes:
-      - .:/shares
-      - bundle:/usr/local/bundle
     links:
       - db
     environment:
@@ -25,7 +22,6 @@ services:
       - app
 volumes:
   mysql-data:
-  bundle:
   public-data:
   tmp-data:
   log-data:
