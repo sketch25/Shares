@@ -11,8 +11,8 @@ services:
       service: app
     links:
       - db
-    environment:
-      RAILS_ENV: production
+    # environment:
+    #   RAILS_ENV: production
 
   web:
     extends:
