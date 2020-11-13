@@ -9,6 +9,9 @@ services:
     extends:
       file: docker-compose.yml
       service: app
+    volumes:
+      - .:/shares
+      - bundle:/usr/local/bundle
     links:
       - db
     environment:
