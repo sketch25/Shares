@@ -27,6 +27,7 @@ services:
 
 volumes:
   mysql-data:
+  bundle:
   public-data:
   tmp-data:
   log-data:
