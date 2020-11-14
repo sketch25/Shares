@@ -9,10 +9,12 @@ services:
     extends:
       file: docker-compose.yml
       service: app
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/shares
     links:
       - db
-    environment:
-      RAILS_ENV: production
 
   web:
     extends:
