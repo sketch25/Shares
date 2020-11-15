@@ -16,5 +16,5 @@ RUN bundle install
 
 ADD . /shares
 
-RUN mkdir tmp/pids
+RUN mkdir /tmp/pids
 RUN mkdir -p tmp/sockets
