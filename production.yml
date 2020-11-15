@@ -11,6 +11,8 @@ services:
       service: app
     tty: true
     stdin_open: true
+    volumes:
+      - .:/shares
     links:
       - db
     environment:
