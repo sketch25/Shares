@@ -15,8 +15,6 @@ services:
       - public-data:/shares/public
       - tmp-data:/shares/tmp
       - log-data:/shares/log
-    links:
-      - db
   
   web:
     build:
