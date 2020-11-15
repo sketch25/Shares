@@ -9,6 +9,8 @@ services:
     extends:
       file: docker-compose.yml
       service: app
+    tty: true
+    stdin_open: true
     links:
       - db
     environment:
