@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  before_action :set_tag, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @comment = Comment.new
@@ -39,4 +39,8 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content).merge(user_id: current_user.id, post_id: params[:post_id])
   end
   
+  def set_tag
+    @tags = Tag.joins(:post_tags).group(:tag_id).order('count(post_id) desc')
+  end
+
 end
