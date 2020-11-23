@@ -32,7 +32,7 @@ Sharesは情報共有アプリケーションです。<br>
 
 ### Step4 いいね
 『記事』『質問』『コメント』には【いいね】が出来ます。<br>
-いいねは個人の評価に繋がりますので誰かの役に立つ投稿をしましょう
+いいねは個人の評価に繋がりますので誰かの役に立つ投稿をしましょう。
 <p align = "center">
 <img width="632" alt="462a055707591a504069e085d425f81a" src="https://user-images.githubusercontent.com/64675873/99936377-53e0e200-2da6-11eb-9ab1-52c396a3a240.png">
 </p>
@@ -40,7 +40,7 @@ Sharesは情報共有アプリケーションです。<br>
 
 ### Step5 フォロー
 気になるユーザをフォローしましょう。<br>
-フォローしたユーザーの投稿はタイムラインに表示されます
+フォローしたユーザーの投稿はタイムラインに表示されます。
 <p align = "center">
 <img width="972" alt="cb6dae08b04b9b2000c675c18810d170" src="https://user-images.githubusercontent.com/64675873/99936465-8f7bac00-2da6-11eb-9ee1-1af5d7fd8609.png">
 </p>
