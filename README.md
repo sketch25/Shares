@@ -1,153 +1,67 @@
-# README
+# Shares
+情報共有アプリケーション
+<p align = "center">
+<img width="840"  src="https://user-images.githubusercontent.com/64675873/99936755-3bbd9280-2da7-11eb-8cee-48eae964e066.jpg">
+</p>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーション説明
+Sharesは情報共有アプリケーションです。
+個人に価値の集まるこの時代だからこそ、情報の発信源が重要になってきました。
+アプリを通して信頼を獲得し、自らの価値を高めましょう。
+# Step1 ユーザー登録
+ユーザー登録すると自分だけのページを作成できます。
 
-Things you may want to cover:
+# Step2 投稿
+右上の鉛筆ボタンから投稿できます。
+投稿には２種類『記事』と『質問』
+記事・・・自分の持っている情報をみんなと共有
+質問・・・自分の疑問を誰かにきいてみる
+<p align = "center">
+<img width="658" alt="24f66f94c840181a984b7523b3bdeb85" src="https://user-images.githubusercontent.com/64675873/99936306-30b63280-2da6-11eb-85f6-0bb76755f591.png">
+</p>
 
-* Ruby version
+# Step3 コメント
+記事や質問にはコメントを返せます。
+記事の下のリプライボタンを押せばコメント投稿画面へ
+<p align = "center">
+<img width="648" alt="c184f12b2210ae40e4c6c4b0ec7270a4" src="https://user-images.githubusercontent.com/64675873/99936426-75da6480-2da6-11eb-9ae1-4b0ad429495d.png">
+</p>
 
-* System dependencies
+# Step4 いいね
+『記事』『質問』『コメント』には【いいね】が出来ます。
+いいねは個人の評価に繋がりますので誰かの役に立つ投稿を心がけましょう
+<p align = "center">
+<img width="632" alt="462a055707591a504069e085d425f81a" src="https://user-images.githubusercontent.com/64675873/99936377-53e0e200-2da6-11eb-9ab1-52c396a3a240.png">
+</p>
 
-* Configuration
 
-* Database creation
+# Step5 フォロー
+気になるユーザをフォローしましょう。
+フォローしたユーザーの投稿はタイムラインに表示されます
+<p align = "center">
+<img width="972" alt="cb6dae08b04b9b2000c675c18810d170" src="https://user-images.githubusercontent.com/64675873/99936465-8f7bac00-2da6-11eb-9ee1-1af5d7fd8609.png">
+</p>
 
-* Database initialization
+# Step6 検索
+検索には２種類あります。
+検索ボックス・・・キーワードを入力すると全投稿から該当記事を検索
+ハッシュタグ・・・記事の投稿にはタグが付けられる。タグを押すと全投稿から該当タグを検索
+<p align = "center">
+<img width="638" alt="ff411c2709b8b8d911fb495251a748fb" src="https://user-images.githubusercontent.com/64675873/99936498-a1f5e580-2da6-11eb-85f8-ce2c43490828.png">
+</p>
 
-* How to run the test suite
+## 使用技術
+Haml/Sass/Ruby(Ruby on Rails)/AWS(EC2, S3, Route53)/Doker
 
-* Services (job queues, cache servers, search engines, etc.)
+## :globe_with_meridians: App URL
+### **http://shares.ninja**  
 
-* Deployment instructions
+## インフラ構築図
+<p align = "center">
+<img src="https://user-images.githubusercontent.com/64675873/99937233-8be92480-2da8-11eb-98a6-ce1db36ec6e7.png">
+</p>
 
-* ...
-
-## usersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false,  unique: true|
-|nickname|string|null: false|
-|icon|string||
-|profile|text||
-|mail|string|null: false, unique: true|
-|password|string|null: false|
-
-### Association
-- has_many :posts
-- has_many :comments
-- has_many :goods
-- has_many :good_posts, through: :goods, source: :post
-- has_many :bads
-- has_many :bad_posts, through: :bads, source: :post
-- has_many :comgoods
-- has_many :comgood_comments, through: :comgoods, source: :comment
-- has_many :combad
-- has_many :combad_comments, through: :combads, source: :comment
-- has_many :relationships
-- has_many :followings, through: :relationships, source: :follow
-- has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
-- has_many :followers, through: :reverse_of_relationships, source: :user
-
-## Relationshipテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|follow_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :follow, class_name: 'User'
-
-## postsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|title|string|null: false|
-|content|text|null: false|
-|type|string|null: false|
-|hashtag|string||
-
-### Association
-- belongs_to :user
-- has_many :comments
-- has_many :goods
-- has_many :good_users, through: :goods, source: :user
-- has_many :bads
-- has_many :bad_users, through: :bads, source: :user
-- has_many :post_tags
-- has_many :tags, through: :post_tags
-
-## goodsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|post_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :post
-
-## badsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|post_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :post
-
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|post_id|references|null: false, foreign_key: true|
-|content|text|null: false|
-
-### Association
-- belongs_to :user
-- belongs_to :post
-- has_many :comgoods
-- has_many :comgood_users, through: :comgoods, source: :user
-- has_many :combads
-- has_many :combad_users, through: :combads, source: :user
-
-## comgoodsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|post_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :comment
-
-## combadsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|post_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :comment
-
-## post_tagsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|post_id|references|null: false, foreign_key: true|
-|tag_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :post
-- belongs_to :tag
-
-## tagsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|tag|string|null: false|
-
-### Association
-- has_many :posts_tags
-- has_many :posts,through:post_tags
+## ER図
+<p align = "center">
+<img src="https://user-images.githubusercontent.com/64675873/99937151-50e6f100-2da8-11eb-97b2-bc7eba2c9077.png">
+</p>

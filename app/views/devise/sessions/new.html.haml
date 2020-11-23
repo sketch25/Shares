@@ -3,6 +3,10 @@
     .AccountPage__title
       .AccountPage__title__content
         %h2 ログイン
+      .AccountPage__title__sample
+        下記の情報でログインできます。
+        %br Eメール: sample@email.com
+        パスワード: samplepass
       = render "devise/shared/links"
     .AccountPage__form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
