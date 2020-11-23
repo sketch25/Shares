@@ -8,10 +8,10 @@
 Sharesは情報共有アプリケーションです。
 個人に価値の集まるこの時代だからこそ、情報の発信源が重要になってきました。
 アプリを通して信頼を獲得し、自らの価値を高めましょう。
-# Step1 ユーザー登録
+### Step1 ユーザー登録
 ユーザー登録すると自分だけのページを作成できます。
 
-# Step2 投稿
+### Step2 投稿
 右上の鉛筆ボタンから投稿できます。
 投稿には２種類『記事』と『質問』
 記事・・・自分の持っている情報をみんなと共有
@@ -20,14 +20,14 @@ Sharesは情報共有アプリケーションです。
 <img width="658" alt="24f66f94c840181a984b7523b3bdeb85" src="https://user-images.githubusercontent.com/64675873/99936306-30b63280-2da6-11eb-85f6-0bb76755f591.png">
 </p>
 
-# Step3 コメント
+### Step3 コメント
 記事や質問にはコメントを返せます。
 記事の下のリプライボタンを押せばコメント投稿画面へ
 <p align = "center">
 <img width="648" alt="c184f12b2210ae40e4c6c4b0ec7270a4" src="https://user-images.githubusercontent.com/64675873/99936426-75da6480-2da6-11eb-9ae1-4b0ad429495d.png">
 </p>
 
-# Step4 いいね
+### Step4 いいね
 『記事』『質問』『コメント』には【いいね】が出来ます。
 いいねは個人の評価に繋がりますので誰かの役に立つ投稿を心がけましょう
 <p align = "center">
@@ -35,14 +35,14 @@ Sharesは情報共有アプリケーションです。
 </p>
 
 
-# Step5 フォロー
+### Step5 フォロー
 気になるユーザをフォローしましょう。
 フォローしたユーザーの投稿はタイムラインに表示されます
 <p align = "center">
 <img width="972" alt="cb6dae08b04b9b2000c675c18810d170" src="https://user-images.githubusercontent.com/64675873/99936465-8f7bac00-2da6-11eb-9ee1-1af5d7fd8609.png">
 </p>
 
-# Step6 検索
+### Step6 検索
 検索には２種類あります。
 検索ボックス・・・キーワードを入力すると全投稿から該当記事を検索
 ハッシュタグ・・・記事の投稿にはタグが付けられる。タグを押すと全投稿から該当タグを検索
@@ -51,10 +51,12 @@ Sharesは情報共有アプリケーションです。
 </p>
 
 ## 使用技術
+
 Haml/Sass/Ruby(Ruby on Rails)/AWS(EC2, S3, Route53)/Doker
 
 ## :globe_with_meridians: App URL
 ### **http://shares.ninja**  
+
 
 ## インフラ構築図
 <p align = "center">
