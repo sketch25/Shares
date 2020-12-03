@@ -57,7 +57,7 @@ Sharesは情報共有アプリケーションです。<br>
 
 ## 使用技術
 
-### Haml/Sass/Ruby(Ruby on Rails)/<br>AWS(EC2, S3, Route53)/Doker
+### Haml/Sass/Ruby(Ruby on Rails)/<br>AWS(EC2, S3, Route53)/Docker
 
 ## :globe_with_meridians: App URL
 ### **http://shares.ninja**  
